@@ -8,6 +8,7 @@ This repo contains all projects completed while learning Javascript and this REA
 - Preview on Web Server (VS Code plugin)
 - Prettier - Code formatted (VS Code plugin)
 
+---
 
 ## VS Code Plugin Settings
 
@@ -21,6 +22,7 @@ This repo contains all projects completed while learning Javascript and this REA
 "prettier.singleQuote": true,
 ```
 
+---
 
 ## Javascript Helper Methods
 
@@ -38,6 +40,7 @@ alert();
 console.log();
 ```
 
+---
 
 ## Javascript Statements
 
@@ -47,6 +50,7 @@ console.log("hello Africa");
 console.log("hello jessica");
 ```
 
+---
 
 ## Javascript Comments
 
@@ -58,6 +62,7 @@ This is a multi-line comment
 */
 ```
 
+---
 
 ## Javascript Variables
 
@@ -77,6 +82,7 @@ console.log(name);
 console.log(address, zip, street);
 ```
 
+---
 
 ## Variable Naming Rules
 
@@ -87,6 +93,7 @@ console.log(address, zip, street);
 - variables are case-sensitive
 - complex variable names are written with underscores or as camelcase
 
+---
 
 ## LET vs CONST vs VAR
 
@@ -105,6 +112,7 @@ console.log(value);
 console.log(lastName);
 ```
 
+---
 
 ## String Concatenation
 
@@ -118,6 +126,7 @@ fullName = name + ' ' + lastName;
 console.log('Hello there ' + fullName);
 ```
 
+---
 
 ## Number Operations
 
@@ -158,6 +167,7 @@ number3 ++;
 const amount = number % 3
 ```
 
+---
 
 ## Implicit Type Conversion
 
@@ -174,6 +184,7 @@ let value = '500'              // string
 value = parseInt(value)        // integer
 ```
 
+---
 
 ## Data Types in Javascript
 
@@ -342,6 +353,7 @@ person.greeting();
 person.name = 'bob';
 ```
 
+---
 
 ## Conditional Statements
 
@@ -353,6 +365,7 @@ if(condition){
 }
 ```
 
+---
 
 ## Comparison Operators
 
@@ -413,6 +426,7 @@ if(num1 === num2){
 }
 ```
 
+---
 
 ## Logical Operators
 
@@ -443,6 +457,7 @@ if (name === 'bob' && age === 24) {
 }
 ```
 
+---
 
 ## Switch Statements
 
@@ -476,6 +491,7 @@ switch(dice){
 }
 ```
 
+---
 
 ## Loops
 
@@ -516,6 +532,7 @@ for(let number = 11; number >= 0; number--){
 }
 ```
 
+---
 
 ## String methods
 
@@ -542,6 +559,7 @@ A complete list of string methods can be found at:
 - [w3schools](https://www.w3schools.com/js/js_string_methods.asp)
 - [mozilla mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
+---
 
 ## Template Literals
 
@@ -555,6 +573,7 @@ const senetence = `Hey it's ${name}, he is ${age} years old and 4 + 4 = ${4+4}`;
 console.log(senetence);
 ```
 
+---
 
 ## Array Methods
 
@@ -623,18 +642,21 @@ console.log(specificNames);
 console.log(allNames);
 ```
 
+---
 
 ## Value vs Reference
 
 - When applying a method on a primitive data type, the value is not changed directly.
 - When applying a method on a non-primitive data type, the value is changed directly.
 
+---
 
 ## Null vs Undefined
 
 - Javascript returns undefined when it cannot find the value for the variable
 - Javascript returns null when the developer sets this value either implicitly or explicitly
 
+---
 
 ## Truthy and Falsy
 
@@ -662,6 +684,7 @@ if (text2) {
 }
 ```
 
+---
 
 ## Ternary Operators
 
@@ -672,6 +695,7 @@ const value = 2 > 1;
 value ? console.log('value is true') : console.log('value is false');
 ```
 
+---
 
 ## Global Scope vs Local Scope
 
@@ -685,6 +709,7 @@ __Local scope__
 - Local variables cannot be accessed outside a code block it was declared in
 - Local variables cannot be modified outside a code block it was declared in
 
+---
 
 ## Variable Lookup
 
@@ -692,6 +717,7 @@ Javascript looks up variables in the following order:
 - local scope
 - global scope
 
+---
 
 ## Callback Functions and Higher Order Functions
 
@@ -720,6 +746,7 @@ greet('bobo', morning);
 greet('peter', morning);
 ```
 
+---
 
 ## Array Methods - Iterators
 
@@ -811,6 +838,7 @@ const total = people.reduce(function (acc, curr) {
 console.log(total);
 ```
 
+---
 
 ## Math Object
 
@@ -865,6 +893,7 @@ const result = Math.random();
 console.log(result);
 ```
 
+---
 
 ## Date Object
 
@@ -908,6 +937,7 @@ const sentence = `${days[day]}, ${date.getDate()} ${months[month]} ${date.getFul
 console.log(sentence);
 ```
 
+---
 
 ## DOM - Document Object Model
 
@@ -933,6 +963,7 @@ __DOM properties and Methods__
 console.dir(document);
 ```
 
+---
 
 ## Operations on the DOM
 
@@ -998,6 +1029,7 @@ list.forEach(function(item) {
 });
 ```
 
+---
 
 ## DOM - Child Nodes
 
@@ -1044,6 +1076,7 @@ console.log(result.lastchild);
 console.log(result.lastElementChild);
 ```
 
+---
 
 ## DOM - Parent Nodes
 
@@ -1058,6 +1091,7 @@ parent.style.color = 'red';
 // there is also parentElement
 ```
 
+---
 
 ## DOM - Sibling Nodes
 
@@ -1093,6 +1127,7 @@ console.log(third);
 console.log(last.previousElementSibling);
 ```
 
+---
 
 ## DOM - Element Sibling Nodes 
 
@@ -1116,6 +1151,7 @@ const third =  last.previousElementSibling;
 third.style.color = 'red';
 ```
 
+---
 
 ## nodevalue
 
@@ -1130,6 +1166,7 @@ console.log(value);
 console.log(easyValue);
 ```
 
+---
 
 ## Getting and Setting HTML Attributes
 
@@ -1156,6 +1193,7 @@ last.textContent = 'i also have a  class of first'
 console.log(last)
 ```
 
+---
 
 ## Adding CSS dynamically using class list and class name
 
@@ -1189,6 +1227,7 @@ third.classList.remove('text');
 let result = third.classList.contains('colors');
 ```
 
+---
 
 ## Adding Elements Dynamically to a Document
 
@@ -1237,6 +1276,7 @@ document.body.insertBefore(bodyDiv, result);
 document.body.replaceChild(bodyDiv, result);
 ```
 
+---
 
 ## prepend and innerText
 
@@ -1246,6 +1286,7 @@ heading.innerText = `i am a dynamic heading`;
 document.body.prepend(heading);
 ```
 
+---
 
 ## remove and removeChild
 
@@ -1259,6 +1300,7 @@ const heading = result.querySelector('h1');
 result.removeChild(heading);
 ```
 
+---
 
 ## innerHTML and textContent
 
@@ -1279,6 +1321,7 @@ ul.innerHTML = `<li class="item">list item</li>
 document.body.appendChild(ul);
 ```
 
+---
 
 ## CSS Style Property
 
@@ -1294,6 +1337,7 @@ const random = document.querySelector('.random');
 random.classList.add('title');
 ```
 
+---
 
 ## Event Listeners
 
@@ -1321,6 +1365,7 @@ function changeColors() {
 btn.addEventListener('click', changeColors);
 ```
 
+---
 
 ## Mouse Events
 
@@ -1374,6 +1419,7 @@ heading.addEventListener('mouseleave', function() {
 });
 ```
 
+---
 
 ## Key Events
 
@@ -1408,6 +1454,7 @@ nameInput.addEventListener('keyup', function() {
 });
 ```
 
+---
 
 ## Event Objects
 
