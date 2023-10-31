@@ -6,7 +6,7 @@ This repo contains all projects completed while learning Javascript and this REA
 
 - Visual Studio Code
 - Preview on Web Server (VS Code plugin)
-- Prettier - Code formatted (VS Code plugin)
+- Prettier - Code formater (VS Code plugin)
 
 ---
 
