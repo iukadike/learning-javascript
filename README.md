@@ -1117,27 +1117,36 @@ third.style.color = 'red';
 ```
 
 
-## // nodevalue - for the operations that return whitespaces, we can use nodevalue to get the actual value
+## nodevalue
 
+for the operations that return whitespaces, we can use nodevalue to get the actual value
+
+```javascript
 const item = document.getElementById('special');
 const value = item.firstChild.nodeValue;
 const easyValue = item.textContent;
 
 console.log(value);
 console.log(easyValue);
+```
 
--------------------------------------------------------------------------------------------------------
 
-Getting and Setting HTML Attributes
+## Getting and Setting HTML Attributes
 
+### getAttribute
+
+```javascript
 // getAttribute
-
 const first = document.querySelector('.first');
 const idValue = first.getAttribute('id');
 
 const link = document.getElementById('link');
 const showLink = link.getAttribute('href');
+```
 
+### setAttribute
+
+```javascript
 // setAttribute
 
 const last = link.nextElementSibling;
@@ -1145,79 +1154,117 @@ last.setAttribute('class', 'first');
 last.textContent = 'i also have a  class of first'
 
 console.log(last)
-
--------------------------------------------------------------------------------------------------------
-
-Adding CSS dynamically usinf class list and class name
+```
 
 
+## Adding CSS dynamically using class list and class name
+
+
+```javascript
 const first = document.getElementById('first');
 const second = document.getElementById('second');
 const third = document.getElementById('third');
+```
 
+### Class name
 
+```javascript
 // getting css class value
 const classValue = first.className;
 console.log(classValue)
+```
 
+```javascript
 // setting css class value - this overwrites existing css classes
 second.className = 'colors'
+```
 
+### Class list
+
+```javascript
 // using classList
 third.classList.add('colors');
 third.classList.remove('text');
 
 let result = third.classList.contains('colors');
+```
 
--------------------------------------------------------------------------------------------------------
 
-Adding elements dynamically to a document
+## Adding Elements Dynamically to a Document
 
+```javascript
 const result = document.querySelector('#result')
+```
 
+### createElement()
+
+```javascript
 // createElement - create empty element
 const bodyDiv = document.createElement('div');
+```
 
+### createTextNode()
+
+```javascript
 // createTextNode - create a text node
 const text = document.createTextNode('a simple body div');
 bodyDiv.appendChild(text);
 document.body.appendChild(bodyDiv);
+```
 
+### appendChild()
+
+```javascript
 // create h2
 const heading = document.createElement('h2');
 const headingText = document.createTextNode('a dynamic heading');
 heading.appendChild(headingText);
 heading.classList.add('blue');
 result.appendChild(heading);
+```
 
+### insertBefore()
+
+```javascript
 // insertBefore('element', 'location');
 document.body.insertBefore(bodyDiv, result);
+```
 
+### replaceChild()
+
+```javascript
 // replaceChild('old', 'new');
 document.body.replaceChild(bodyDiv, result);
+```
 
--------------------------------------------------------------------------------------------------------
 
-// prepend and innerText
+## prepend and innerText
 
+```javascript
 const heading = document.createElement('h2');
 heading.innerText = `i am a dynamic heading`;
 document.body.prepend(heading);
+```
 
--------------------------------------------------------------------------------------------------------
 
-// remove and removeChild
+## remove and removeChild
 
+```javascript
+// remove
 const result = document.querySelector('#result');
 result.remove()
 
+//removeChild
 const heading = result.querySelector('h1');
 result.removeChild(heading);
+```
 
--------------------------------------------------------------------------------------------------------
 
-// innerHTML and textContent
+## innerHTML and textContent
 
+innerHTML preserves the HTML structure while textContent treats supplied value as text
+
+```javascript
 const list = document.getElementById('first')
 const div = document.getElementById('second')
 const item = document.querySelector('.item')
@@ -1226,13 +1273,277 @@ console.log(div.textContent);
 console.log(list.innerHTML);
 console.log(list.textContent);
 
-const ul =document.createElement('ul');
+const ul = document.createElement('ul');
 ul.innerHTML = `<li class="item">list item</li>
                 <li>list item<li> <li> list item>`;
 document.body.appendChild(ul);
+```
 
 
+## CSS Style Property
+
+```javascript
+const random = document.querySelector('.random');
+
+// the following styles are defined in a css with classname "title"
+// random.style.backgroundColor = 'blue';
+// random.style.color = 'white';
+// random.style.fontSize = '3rem';
+// random.style.textTeansform = 'capitalize';
+
+random.classList.add('title');
+```
 
 
+## Event Listeners
+
+Event listeners work by first selecting the element and then adding a listener to it.
+
+```javascript
+const btn = document.querySelector('.btn');
+
+// addEventListener( what event, what to do)
+btn.addEventListener('click', function () {
+    const heading = document.querySelector('h2');
+    heading.classList.add('red');
+})
+```
+
+```javascript
+const btn = document.querySelector('.btn');
+
+// Using function reference
+function changeColors() {
+    let hasClass = heading.classList.contains('red');
+    hasClass ? heading.classList.remove('red') : heading.classList.add('red');
+}
+
+btn.addEventListener('click', changeColors);
+```
 
 
+## Mouse Events
+
+```javascript
+const heading = document.querySelector('h1');
+const btn = document.querySelector('.btn');
+```
+
+### click event
+
+```javascript
+// click
+btn.addEventListener('click', function() {
+    console.log('you clicked me');
+});
+```
+
+### mousedown event
+
+```javascript
+// mousedown
+btn.addEventListener('mousedown', function() {
+    console.log('up');
+});
+```
+
+### mouseup event
+
+```javascript
+// mouseup
+btn.addEventListener('mouseup', function() {
+    console.log('down');
+});
+```
+
+### mouseenter event
+
+```javascript
+// mouseenter
+heading.addEventListener('mouseenter', function() {
+    heading.classList.add('blue');
+});
+```
+
+### mouseleave event
+
+```javascript
+// mouseleave
+heading.addEventListener('mouseleave', function() {
+    heading.classList.remove('blue');
+});
+```
+
+
+## Key Events
+
+```javascript
+const nameInput = document.getElementById('name');
+```
+
+### keypress event
+
+```javascript
+// keypress
+nameInput.addEventListener('keypress', function() {
+    console.log('you pressed a key');
+});
+```
+
+### keydown event
+
+```javascript
+// keydown
+nameInput.addEventListener('keydown', function() {
+    console.log('you pressed a key');
+});
+```
+
+### keyup event
+
+```javascript
+// keyup
+nameInput.addEventListener('keyup', function() {
+    console.log(nameInput.value);
+});
+```
+
+
+## Event Objects
+
+// event.type
+// event.currentTarget
+// event.preventDefault()
+// this
+
+const heading = document.querySelector('h1');
+const btn = document.querySelector('.btn');
+
+heading.addEventListener('click', function(event) {
+    console.log(event.currentTarget);
+    event.currenTarget.classList.add('blue');
+});
+
+btn.addEventListener('click', function(event) {
+    console.log(event.currentTarget);
+    event.currenTarget.classList.add('blue');
+});
+
+-------------------------------------------------------------------------------------------------------
+
+Current target vs target
+
+const btns =  document.querySelectorAll('.btn');
+
+// currentTarget - this always refers to the element to which the event handler has been attached to
+
+btn.forEach(function(btn) {
+    btn.addEventListener('click', function(e) 
+        console.log(e.currentTarget);
+        e.currentTarget.style.color = 'green';
+        });
+});
+
+// target - this identifies the element on which the event occured
+
+btn.forEach(function(btn) {
+    btn.addEventListener('click', function(e) 
+        console.log(e.target);
+        e.target.style.color = 'green';
+        });
+});
+
+-------------------------------------------------------------------------------------------------------
+
+Event Bubling and Capturing - this allows us select dynamic elements
+
+// event propagation - this is the order in which the events are fired
+
+// event capturing - this registers the event at the root and keeps going until it reaches the target
+
+// event bubbling - this selects the clicked element first, then bubble ups
+
+const container = document.querySelector('.container');
+const list = document.querySelector(.list-items);
+
+function showBubbling(e) {
+    console.log('current target: ', e.curentTarget);
+    console.log('target: ', e.target);
+};
+
+list.addEventListener('click', showBubbling);
+container.addEventListener('click', showBubbling);
+
+// event propagation
+
+btn.addEventListener('click', function() {
+    const element = document.createElement('h1');
+    element.classList.add('heading');
+    element.textContent = `i'm inside the container`;
+    container.appendChild(element);
+});
+
+container.addEventListener('click', function(e) {
+    (event.target.classList.contains('heading') ? console.log('hello there');
+});
+
+-------------------------------------------------------------------------------------------------------
+
+HTML Forms
+
+const form = documetn.getElementById('form');
+const name = documetn.getElementById('name');
+const password = documetn.getElementById('password');
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    console.log('form submitted');
+    console.log(name.value);
+    console.log(password.value);
+});
+
+-------------------------------------------------------------------------------------------------------
+
+Local Storage
+
+// setItem
+localStorage.setItem('name', 'john');
+localStorage.setItem('friend', 'john');
+localStorage.setItem('job', 'developer');
+localStorage.setItem('address', 'street 123');
+
+// getItem
+name = localStorage.getItem('name', 'john');
+console.log(name);
+
+// removeItem
+localStorage.removeItem('name');
+
+
+// clear
+localStorage.clear();
+
+-------------------------------------------------------------------------------------------------------
+
+JSON
+
+const friends = ['john', 'peter', 'bob'];
+
+// JSON.stringify()
+localStorage.setItem('friends', JSON.stringify(friends));
+
+// JSON.parse()
+const values = JSON.parse(localStorage.getItem('friends');
+console.log(values[2]);
+
+let fruits;
+
+if(localStorage.getItem('fruits')) {
+    fruits = JSON.parse(localStorage.getItem('fruits'));
+} else {
+    fruits = []
+}
+
+console.log(fruits);
+fruits.push('apple');
+localStorage.setItem('fruits', JSON.stringify(fruits));
