@@ -1458,6 +1458,7 @@ nameInput.addEventListener('keyup', function() {
 
 ## Event Objects
 
+```javascript
 // event.type
 // event.currentTarget
 // event.preventDefault()
@@ -1475,13 +1476,17 @@ btn.addEventListener('click', function(event) {
     console.log(event.currentTarget);
     event.currenTarget.classList.add('blue');
 });
+```
 
--------------------------------------------------------------------------------------------------------
+---
 
-Current target vs target
+## Current target vs target
 
+```javascript
 const btns =  document.querySelectorAll('.btn');
+```
 
+```javascript
 // currentTarget - this always refers to the element to which the event handler has been attached to
 
 btn.forEach(function(btn) {
@@ -1490,8 +1495,10 @@ btn.forEach(function(btn) {
         e.currentTarget.style.color = 'green';
         });
 });
+```
 
-// target - this identifies the element on which the event occured
+```javascript
+// target - this identifies the element on which the event occurred
 
 btn.forEach(function(btn) {
     btn.addEventListener('click', function(e) 
@@ -1499,17 +1506,19 @@ btn.forEach(function(btn) {
         e.target.style.color = 'green';
         });
 });
+```
 
--------------------------------------------------------------------------------------------------------
+---
 
-Event Bubling and Capturing - this allows us select dynamic elements
+## Event Bubbling and Capturing - this allows us to select dynamic elements
 
-// event propagation - this is the order in which the events are fired
+Event Bubbling and capturing allows us to select dynamic elements:
 
-// event capturing - this registers the event at the root and keeps going until it reaches the target
+- event propagation: this is the order in which the events are fired
+- event capturing: this registers the event at the root and keeps going until it reaches the target
+- event bubbling: this selects the clicked element first, then bubble-ups
 
-// event bubbling - this selects the clicked element first, then bubble ups
-
+```javascript
 const container = document.querySelector('.container');
 const list = document.querySelector(.list-items);
 
@@ -1522,7 +1531,6 @@ list.addEventListener('click', showBubbling);
 container.addEventListener('click', showBubbling);
 
 // event propagation
-
 btn.addEventListener('click', function() {
     const element = document.createElement('h1');
     element.classList.add('heading');
@@ -1533,11 +1541,13 @@ btn.addEventListener('click', function() {
 container.addEventListener('click', function(e) {
     (event.target.classList.contains('heading') ? console.log('hello there');
 });
+```
 
--------------------------------------------------------------------------------------------------------
+---
 
-HTML Forms
+## HTML Forms
 
+```javascript
 const form = documetn.getElementById('form');
 const name = documetn.getElementById('name');
 const password = documetn.getElementById('password');
@@ -1548,41 +1558,70 @@ form.addEventListener('submit', function(e) {
     console.log(name.value);
     console.log(password.value);
 });
+```
 
--------------------------------------------------------------------------------------------------------
+---
 
-Local Storage
+## Local Storage
 
+### setItem()
+
+```javascript
 // setItem
 localStorage.setItem('name', 'john');
 localStorage.setItem('friend', 'john');
 localStorage.setItem('job', 'developer');
 localStorage.setItem('address', 'street 123');
+```
 
+### getItem()
+
+```javascript
 // getItem
 name = localStorage.getItem('name', 'john');
 console.log(name);
+```
 
+### removeItem()
+
+```javascript
 // removeItem
 localStorage.removeItem('name');
+```
 
+### clearItem()
 
+```javascript
 // clear
 localStorage.clear();
+```
 
--------------------------------------------------------------------------------------------------------
+---
 
-JSON
+## JSON
 
+```javascript
 const friends = ['john', 'peter', 'bob'];
+```
 
+### JSON.stringify()
+
+```javascript
 // JSON.stringify()
 localStorage.setItem('friends', JSON.stringify(friends));
+```
 
+### JSON.parse()
+
+```javascript
 // JSON.parse()
 const values = JSON.parse(localStorage.getItem('friends');
 console.log(values[2]);
+```
 
+### JSON use case
+
+```javascript
 let fruits;
 
 if(localStorage.getItem('fruits')) {
@@ -1594,3 +1633,4 @@ if(localStorage.getItem('fruits')) {
 console.log(fruits);
 fruits.push('apple');
 localStorage.setItem('fruits', JSON.stringify(fruits));
+```
