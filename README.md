@@ -1,5 +1,5 @@
 # learning-javascript
-This repo contains all projects completed while learning Javascript and this README acts like a quick reference guide.
+This repo contains all projects completed while learning Javascript and this README acts as a quick reference guide.
 
 
 ## Workspace Setup
