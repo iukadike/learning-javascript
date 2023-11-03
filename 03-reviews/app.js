@@ -1,4 +1,4 @@
-// local reviews data
+// source images from google reviews data
 const reviews = [
   {
     id: 1,
@@ -29,56 +29,63 @@ const reviews = [
     text: 'Edison bulb put a bird on it humblebrag, marfa pok pok heirloom fashion axe cray stumptown venmo actually seitan. VHS farm-to-table schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby chic. ',
   },
 ];
-// select items
-const img = document.getElementById('person-img');
-const author = document.getElementById('author');
-const job = document.getElementById('job');
-const info = document.getElementById('info');
 
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-const randomBtn = document.querySelector('.random-btn');
+// select properties
+const author = document.querySelector('#author');
+const job = document.querySelector('#job');
+const image = document.querySelector('#person-img');
+const info = document.querySelector('#info');
 
-// set starting item
-let currentItem = 0;
+// set defaults when the window initially loads
+window.addEventListener('load', () => {
+  author.textContent = reviews[0].name;
+  job.textContent = reviews[0].job;
+  image.setAttribute('src', reviews[0].img);
+  info.textContent = reviews[0].text;
+});
 
-// load initial item
-window.addEventListener('DOMContentLoaded', function () {
-  const item = reviews[currentItem];
-  img.src = item.img;
+// function to select reviews
+showReview = (tracker) => {
+  let item = reviews[tracker];
   author.textContent = item.name;
   job.textContent = item.job;
-  info.textContent = item.text;
-});
+  image.setAttribute('src', reviews[tracker].img);
+  info.textContent = reviews[tracker].text;
+};
 
-// show person based on item
-function showPerson(person) {
-  const item = reviews[person];
-  img.src = item.img;
-  author.textContent = item.name;
-  job.textContent = item.job;
-  info.textContent = item.text;
-}
-// show next person
-nextBtn.addEventListener('click', function () {
-  currentItem++;
-  if (currentItem > reviews.length - 1) {
-    currentItem = 0;
-  }
-  showPerson(currentItem);
-});
-// show prev person
-prevBtn.addEventListener('click', function () {
-  currentItem--;
-  if (currentItem < 0) {
-    currentItem = reviews.length - 1;
-  }
-  showPerson(currentItem);
-});
-// show random person
-randomBtn.addEventListener('click', function () {
-  console.log('hello');
+// configure previous, next, and random buttons
+const btns = document.querySelectorAll('button');
+let tracker = 0;
 
-  currentItem = Math.floor(Math.random() * reviews.length);
-  showPerson(currentItem);
-});
+btns.forEach((btn) =>
+  btn.addEventListener('click', (e) => {
+    // configure the next button
+    if (e.currentTarget.className === 'next-btn') {
+      upperBounds(tracker) ? (tracker = 0) : tracker++;
+      showReview(tracker);
+    }
+    // configure the previous button
+    if (e.currentTarget.className === 'prev-btn') {
+      lowerBounds(tracker) ? (tracker = reviews.length - 1) : tracker--;
+      showReview(tracker);
+    }
+    // configure the random button
+    if (e.currentTarget.className === 'random-btn') {
+      let randomReview = Math.floor(Math.random() * reviews.length);
+      tracker = sameReview(randomReview);
+      showReview(tracker);
+    }
+  })
+);
+
+// functions to check upper and lower boundaries
+const upperBounds = (n) => parseInt(n) === reviews.length - 1;
+const lowerBounds = (n) => parseInt(n) === 0;
+
+// function to avoid randomizing same review
+const sameReview = (randomReview) => {
+  while (randomReview === tracker) {
+    randomReview = Math.floor(Math.random() * reviews.length);
+  }
+  return randomReview;
+};

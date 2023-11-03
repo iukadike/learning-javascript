@@ -3,7 +3,7 @@
 Fonts
 ===============
 */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap');
 
 /*
 =============== 
@@ -43,8 +43,8 @@ Variables
   --clr-green-dark: hsl(125, 67%, 44%);
   --clr-green-light: hsl(125, 71%, 66%);
   --clr-black: #222;
-  --ff-primary: "Roboto", sans-serif;
-  --ff-secondary: "Open Sans", sans-serif;
+  --ff-primary: 'Roboto', sans-serif;
+  --ff-secondary: 'Open Sans', sans-serif;
   --transition: all 0.3s linear;
   --spacing: 0.1rem;
   --radius: 0.25rem;
@@ -167,7 +167,7 @@ main {
 }
 .underline {
   height: 0.25rem;
-  width: 5rem;
+  width: 10rem;
   background: var(--clr-primary-5);
   margin-left: auto;
   margin-right: auto;
@@ -204,9 +204,9 @@ main {
   position: relative;
 }
 .img-container::after {
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Font Awesome 5 Free';
   font-weight: 900;
-  content: "\f10e";
+  content: '\f10e';
   position: absolute;
   top: 0;
   left: 0;
@@ -220,7 +220,7 @@ main {
   color: var(--clr-white);
 }
 .img-container::before {
-  content: "";
+  content: '';
   width: 100%;
   height: 100%;
   background: var(--clr-primary-5);
@@ -231,6 +231,7 @@ main {
 }
 #author {
   margin-bottom: 0.25rem;
+  text-transform: capitalize;
 }
 #job {
   margin-bottom: 0.5rem;
@@ -244,12 +245,13 @@ main {
 .prev-btn,
 .next-btn {
   color: var(--clr-primary-7);
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   background: transparent;
   border-color: transparent;
   margin: 0 0.5rem;
   transition: var(--transition);
   cursor: pointer;
+  font-weight: bolder;
 }
 .prev-btn:hover,
 .next-btn:hover {
