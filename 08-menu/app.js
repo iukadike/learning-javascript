@@ -1,74 +1,167 @@
 const menu = [
   {
     id: 1,
-    title: "buttermilk pancakes",
-    category: "breakfast",
+    title: 'buttermilk pancakes',
+    category: 'breakfast',
     price: 15.99,
-    img: "./images/item-1.jpeg",
-    desc: `I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed `,
+    img: './images/item-1.jpeg',
+    desc: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Inventore ex fugiat placeat consequuntur quos obcaecati.`,
   },
   {
     id: 2,
-    title: "diner double",
-    category: "lunch",
+    title: 'diner double',
+    category: 'lunch',
     price: 13.99,
-    img: "./images/item-2.jpeg",
-    desc: `vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats `,
+    img: './images/item-2.jpeg',
+    desc: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Inventore ex fugiat placeat consequuntur quos obcaecati.`,
   },
   {
     id: 3,
-    title: "godzilla milkshake",
-    category: "shakes",
+    title: 'godzilla milkshake',
+    category: 'shakes',
     price: 6.99,
-    img: "./images/item-3.jpeg",
-    desc: `ombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
+    img: './images/item-3.jpeg',
+    desc: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Inventore ex fugiat placeat consequuntur quos obcaecati.`,
   },
   {
     id: 4,
-    title: "country delight",
-    category: "breakfast",
+    title: 'country delight',
+    category: 'breakfast',
     price: 20.99,
-    img: "./images/item-4.jpeg",
-    desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut, `,
+    img: './images/item-4.jpeg',
+    desc: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Inventore ex fugiat placeat consequuntur quos obcaecati.`,
   },
   {
     id: 5,
-    title: "egg attack",
-    category: "lunch",
+    title: 'egg attack',
+    category: 'lunch',
     price: 22.99,
-    img: "./images/item-5.jpeg",
-    desc: `franzen vegan pabst bicycle rights kickstarter pinterest meditation farm-to-table 90's pop-up `,
+    img: './images/item-5.jpeg',
+    desc: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Inventore ex fugiat placeat consequuntur quos obcaecati.`,
   },
   {
     id: 6,
-    title: "oreo dream",
-    category: "shakes",
+    title: 'oreo dream',
+    category: 'shakes',
     price: 18.99,
-    img: "./images/item-6.jpeg",
-    desc: `Portland chicharrones ethical edison bulb, palo santo craft beer chia heirloom iPhone everyday`,
+    img: './images/item-6.jpeg',
+    desc: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Inventore ex fugiat placeat consequuntur quos obcaecati.`,
   },
   {
     id: 7,
-    title: "bacon overflow",
-    category: "breakfast",
+    title: 'bacon overflow',
+    category: 'breakfast',
     price: 8.99,
-    img: "./images/item-7.jpeg",
-    desc: `carry jianbing normcore freegan. Viral single-origin coffee live-edge, pork belly cloud bread iceland put a bird `,
+    img: './images/item-7.jpeg',
+    desc: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Inventore ex fugiat placeat consequuntur quos obcaecati.`,
   },
   {
     id: 8,
-    title: "american classic",
-    category: "lunch",
+    title: 'american classic',
+    category: 'lunch',
     price: 12.99,
-    img: "./images/item-8.jpeg",
-    desc: `on it tumblr kickstarter thundercats migas everyday carry squid palo santo leggings. Food truck truffaut  `,
+    img: './images/item-8.jpeg',
+    desc: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Inventore ex fugiat placeat consequuntur quos obcaecati.`,
   },
   {
     id: 9,
-    title: "quarantine buddy",
-    category: "shakes",
+    title: 'quarantine buddy',
+    category: 'shakes',
     price: 16.99,
-    img: "./images/item-9.jpeg",
-    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+    img: './images/item-9.jpeg',
+    desc: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Inventore ex fugiat placeat consequuntur quos obcaecati.`,
+  },
+  {
+    id: 10,
+    title: 'steak dinner',
+    category: 'dinner',
+    price: 39.99,
+    img: './images/item-10.jpeg',
+    desc: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Inventore ex fugiat placeat consequuntur quos obcaecati.`,
   },
 ];
+
+const menuItems = document.querySelector('.section-center');
+const btns = document.querySelector('.btn-container');
+let filterBtns;
+
+// when page content loads
+window.addEventListener('DOMContentLoaded', () => {
+  // display the buttons
+  displayButtons();
+
+  // display the menu
+  menuItems.innerHTML = displayMenu(menu);
+});
+
+// display button items
+// get the categories for the buttons
+const displayButtons = () => {
+  let categories = menu.reduce(
+    (value, item) => {
+      if (!value.includes(item.category)) {
+        value.push(item.category);
+      }
+      return value;
+    },
+    ['all']
+  );
+
+  // display the filter buttons
+  const categoryBtn = categories
+    .map((item) => {
+      return `<li class="btn filter-btn" data-id=${item}>${item}</li>`;
+    })
+    .join('');
+  btns.innerHTML = categoryBtn;
+
+  // display filtered menus
+  // also practice accesing dataset items in Javascript
+  filterBtns = btns.querySelectorAll('.filter-btn');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      let filteredMenu = menu.filter(
+        (item) => item.category === e.currentTarget.dataset.id
+      );
+      btn.textContent === 'all'
+        ? (menuItems.innerHTML = displayMenu(menu))
+        : (menuItems.innerHTML = displayMenu(filteredMenu));
+    });
+  });
+};
+
+// display menu items
+// return populated HTLM content via map function
+const displayMenu = (showMenu) => {
+  let mapMenu = showMenu.map((item) => {
+    return `<!-- item ${item.id} -->
+        <div class="menu-item">
+          <img
+            src="${item.img}"
+            alt="${item.title}"
+            class="photo"
+          />
+          <div class="item-info">
+            <header>
+              <h4>${item.title}</h4>
+              <h4 class="price">$${item.price}</h4>
+            </header>
+            <p class="item-text">${item.desc}</p>
+          </div>
+        </div>`;
+  });
+  // turn the HTML array to HTML string
+  mapMenu = mapMenu.join('');
+  return mapMenu;
+};
